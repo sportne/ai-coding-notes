@@ -1,0 +1,22 @@
+plugins {
+    id 'org.graalvm.buildtools.native'
+}
+
+graalvmNative {
+    binaries {
+        main {
+            imageName = project.name
+            fallback = false
+            buildArgs.add('--no-fallback')
+        }
+        test {
+            buildArgs.add('--no-fallback')
+        }
+    }
+}
+
+tasks.register('nativeSmoke') {
+    group = 'verification'
+    description = 'Builds the native executable for this module.'
+    dependsOn tasks.named('nativeCompile')
+}

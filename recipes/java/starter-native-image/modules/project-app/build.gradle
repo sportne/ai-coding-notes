@@ -1,0 +1,11 @@
+plugins {
+    id 'java-application-conventions'
+    id 'native-image-conventions'
+}
+
+dependencies {
+    implementation project(':modules:project-api')
+    implementation project(':modules:project-core')
+}
+
+description = 'Application entrypoint and native executable module.'

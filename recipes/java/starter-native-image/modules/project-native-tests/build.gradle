@@ -1,0 +1,11 @@
+plugins {
+    id 'java-library-conventions'
+    id 'native-image-conventions'
+}
+
+dependencies {
+    testImplementation project(':modules:project-api')
+    testImplementation project(':modules:project-core')
+}
+
+description = 'Native Image compatibility tests.'

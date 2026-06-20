@@ -19,6 +19,8 @@ recipes/
   common-project-layout.md
   java/
     gradle-multi-module.md
+    starter-standard/
+    starter-native-image/
   python/
     package-cli.md
     starter/

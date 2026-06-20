@@ -1,0 +1,11 @@
+plugins {
+    id 'java-architecture-test-conventions'
+}
+
+dependencies {
+    testImplementation project(':modules:project-api')
+    testImplementation project(':modules:project-core')
+    testImplementation project(':modules:project-app')
+}
+
+description = 'Architecture and module-boundary tests.'

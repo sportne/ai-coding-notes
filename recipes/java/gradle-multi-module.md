@@ -2,6 +2,11 @@
 
 Use this for Java libraries, JVM-adjacent tooling, modular applications, and projects that may need publishing, architecture tests, or native-image checks later.
 
+Copyable partial scaffolds:
+
+- [starter-standard](starter-standard/) for normal JVM library or application projects.
+- [starter-native-image](starter-native-image/) for projects that need GraalVM Native Image wiring.
+
 ## Directory Shape
 
 ```text

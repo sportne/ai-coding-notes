@@ -1,0 +1,46 @@
+plugins {
+    id 'base'
+}
+
+group = '<group-id>'
+version = '<version>'
+
+def checkedProjects = [
+    ':modules:project-api',
+    ':modules:project-core',
+    ':modules:project-app',
+    ':modules:project-native-tests',
+    ':modules:project-architecture-tests',
+]
+
+tasks.register('checkAll') {
+    group = 'verification'
+    description = 'Runs check tasks across all included Java projects.'
+    dependsOn checkedProjects.collect { "${it}:check" }
+}
+
+tasks.register('qualityGate') {
+    group = 'verification'
+    description = 'Runs the default local quality gate.'
+    dependsOn 'checkAll'
+    dependsOn checkedProjects.collect { "${it}:spotlessCheck" }
+    dependsOn checkedProjects.collect { "${it}:jacocoTestCoverageVerification" }
+    dependsOn checkedProjects.collect { "${it}:javadoc" }
+}
+
+tasks.named('check') {
+    dependsOn tasks.named('qualityGate')
+}
+
+tasks.register('jacocoTestCoverageVerification') {
+    group = 'verification'
+    description = 'Runs coverage verification for all Java projects.'
+    dependsOn checkedProjects.collect { "${it}:jacocoTestCoverageVerification" }
+}
+
+tasks.register('nativeSmoke') {
+    group = 'verification'
+    description = 'Runs native-image smoke checks for native-sensitive modules.'
+    dependsOn ':modules:project-app:nativeCompile'
+    dependsOn ':modules:project-native-tests:nativeTest'
+}

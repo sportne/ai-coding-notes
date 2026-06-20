@@ -1,0 +1,9 @@
+plugins {
+    id 'java-library-conventions'
+}
+
+dependencies {
+    api project(':modules:project-api')
+}
+
+description = 'Reusable test fixtures and assertions.'

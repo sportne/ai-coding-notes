@@ -1,0 +1,8 @@
+plugins {
+    id 'application'
+    id 'java-library-conventions'
+}
+
+application {
+    mainClass = '<main-class>'
+}

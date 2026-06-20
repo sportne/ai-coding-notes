@@ -11,6 +11,7 @@ Use it as a starting point when asking an AI coding agent to scaffold, harden, o
 - [Python package and CLI recipe](recipes/python/package-cli.md) covers the `src/`, `tests/`, `Makefile`, and `pyproject.toml` style.
 - [C++ CMake recipe](recipes/cpp/cmake-library.md) covers CMake presets, `include/`, `src/`, `tests/`, and local quality gates.
 - [Demo or harness recipe](recipes/mixed/demo-harness.md) covers projects that combine scripts, generated examples, C helpers, containers, or GUI/live-loop validation.
+- [Containerized testing pattern](recipes/mixed/containerized-testing.md) covers Docker/Podman/Compose lanes for service dependencies, live environments, and external interop.
 
 ## Directory Map
 
@@ -29,6 +30,7 @@ recipes/
     starter/
   mixed/
     demo-harness.md
+    containerized-testing.md
 templates/
   adr.md
   agent-instructions.md

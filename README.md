@@ -6,15 +6,11 @@ Use it as a starting point when asking an AI coding agent to scaffold, harden, o
 
 ## Start Here
 
-- [Project pattern summary](surveys/project-patterns.md) records recurring patterns worth reusing.
 - [Common project layout](recipes/common-project-layout.md) captures the baseline directories that show up across languages.
 - [Java Gradle multi-module recipe](recipes/java/gradle-multi-module.md) is the strongest current pattern in the workspace.
 - [Python package and CLI recipe](recipes/python/package-cli.md) covers the `src/`, `tests/`, `Makefile`, and `pyproject.toml` style.
 - [C++ CMake recipe](recipes/cpp/cmake-library.md) covers CMake presets, `include/`, `src/`, `tests/`, and local quality gates.
-- [.NET Blazor web app recipe](recipes/dotnet/blazor-webapp.md) covers solution-based Blazor WebAssembly plus API projects.
 - [Demo or harness recipe](recipes/mixed/demo-harness.md) covers projects that combine scripts, generated examples, C helpers, containers, or GUI/live-loop validation.
-- [Design decision documents recipe](recipes/process/design-decision-docs.md) covers schema-backed design analysis and report generation.
-- [Shell automation toolkit recipe](recipes/shell/automation-toolkit.md) covers script-driven repository and migration tooling.
 
 ## Directory Map
 
@@ -25,18 +21,11 @@ recipes/
     gradle-multi-module.md
   python/
     package-cli.md
+    starter/
   cpp/
     cmake-library.md
-  dotnet/
-    blazor-webapp.md
   mixed/
     demo-harness.md
-  process/
-    design-decision-docs.md
-  shell/
-    automation-toolkit.md
-surveys/
-  project-patterns.md
 templates/
   agent-instructions.md
   project-checklist.md

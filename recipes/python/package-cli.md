@@ -2,6 +2,8 @@
 
 Use this for Python libraries, CLIs, repo-analysis tools, API wrappers, GUI utilities, and AI/provider-backed tooling.
 
+For a copyable partial scaffold, see [starter](starter/).
+
 ## Directory Shape
 
 ```text

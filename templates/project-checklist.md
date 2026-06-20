@@ -7,10 +7,7 @@ Before filling this out, choose the closest project-type recipe and use its tool
 - [Java Gradle multi-module](../recipes/java/gradle-multi-module.md)
 - [Python package and CLI](../recipes/python/package-cli.md)
 - [C++ CMake library](../recipes/cpp/cmake-library.md)
-- [.NET Blazor web app](../recipes/dotnet/blazor-webapp.md)
 - [Demo or harness](../recipes/mixed/demo-harness.md)
-- [Design decision documents](../recipes/process/design-decision-docs.md)
-- [Shell automation toolkit](../recipes/shell/automation-toolkit.md)
 
 ## Initial Scaffold
 

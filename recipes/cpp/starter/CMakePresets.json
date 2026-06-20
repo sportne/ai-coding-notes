@@ -1,0 +1,191 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 25,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "clang-debug",
+      "displayName": "Clang Debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/clang-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "clang-release",
+      "displayName": "Clang Release",
+      "inherits": "clang-debug",
+      "binaryDir": "${sourceDir}/build/clang-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "clang-debug-asan-ubsan",
+      "displayName": "Clang Debug ASan UBSan",
+      "inherits": "clang-debug",
+      "binaryDir": "${sourceDir}/build/clang-debug-asan-ubsan",
+      "cacheVariables": {
+        "STARTER_PROJECT_ENABLE_SANITIZERS": "ON"
+      }
+    },
+    {
+      "name": "gcc-coverage",
+      "displayName": "GCC Coverage",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/gcc-coverage",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_COMPILER": "g++",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "STARTER_PROJECT_ENABLE_COVERAGE": "ON"
+      }
+    },
+    {
+      "name": "clang-static-analysis",
+      "displayName": "Clang Static Analysis",
+      "inherits": "clang-debug",
+      "binaryDir": "${sourceDir}/build/clang-static-analysis",
+      "cacheVariables": {
+        "STARTER_PROJECT_ENABLE_CLANG_TIDY": "ON",
+        "STARTER_PROJECT_ENABLE_CPPCHECK": "ON",
+        "STARTER_PROJECT_ENABLE_IWYU": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build-clang-debug",
+      "configurePreset": "clang-debug"
+    },
+    {
+      "name": "build-clang-release",
+      "configurePreset": "clang-release"
+    },
+    {
+      "name": "build-asan",
+      "configurePreset": "clang-debug-asan-ubsan"
+    },
+    {
+      "name": "build-coverage",
+      "configurePreset": "gcc-coverage"
+    },
+    {
+      "name": "build-static-analysis",
+      "configurePreset": "clang-static-analysis"
+    },
+    {
+      "name": "format",
+      "configurePreset": "clang-debug",
+      "targets": ["format"]
+    },
+    {
+      "name": "format-check",
+      "configurePreset": "clang-debug",
+      "targets": ["format-check"]
+    },
+    {
+      "name": "format-check-static-analysis",
+      "configurePreset": "clang-static-analysis",
+      "targets": ["format-check"]
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "test-clang-debug",
+      "configurePreset": "clang-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "test-asan",
+      "configurePreset": "clang-debug-asan-ubsan",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "test-coverage",
+      "configurePreset": "gcc-coverage",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "test-static-analysis",
+      "configurePreset": "clang-static-analysis",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "debug",
+      "steps": [
+        { "type": "configure", "name": "clang-debug" },
+        { "type": "build", "name": "build-clang-debug" },
+        { "type": "test", "name": "test-clang-debug" }
+      ]
+    },
+    {
+      "name": "release",
+      "steps": [
+        { "type": "configure", "name": "clang-release" },
+        { "type": "build", "name": "build-clang-release" }
+      ]
+    },
+    {
+      "name": "asan",
+      "steps": [
+        { "type": "configure", "name": "clang-debug-asan-ubsan" },
+        { "type": "build", "name": "build-asan" },
+        { "type": "test", "name": "test-asan" }
+      ]
+    },
+    {
+      "name": "coverage",
+      "steps": [
+        { "type": "configure", "name": "gcc-coverage" },
+        { "type": "build", "name": "build-coverage" },
+        { "type": "test", "name": "test-coverage" }
+      ]
+    },
+    {
+      "name": "static-analysis",
+      "steps": [
+        { "type": "configure", "name": "clang-static-analysis" },
+        { "type": "build", "name": "build-static-analysis" }
+      ]
+    },
+    {
+      "name": "format",
+      "steps": [
+        { "type": "configure", "name": "clang-debug" },
+        { "type": "build", "name": "format" }
+      ]
+    },
+    {
+      "name": "format-check",
+      "steps": [
+        { "type": "configure", "name": "clang-debug" },
+        { "type": "build", "name": "format-check" }
+      ]
+    },
+    {
+      "name": "ci-local",
+      "steps": [
+        { "type": "configure", "name": "clang-static-analysis" },
+        { "type": "build", "name": "format-check-static-analysis" },
+        { "type": "build", "name": "build-static-analysis" },
+        { "type": "test", "name": "test-static-analysis" }
+      ]
+    }
+  ]
+}

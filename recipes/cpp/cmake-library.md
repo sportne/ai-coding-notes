@@ -2,6 +2,8 @@
 
 Use this for C++ libraries, native agents, and performance-heavy code.
 
+A partial starter lives in [starter](starter/). It includes the CMake, formatting, static-analysis, CI, docs, and task scaffolding without application or library source code.
+
 ## Directory Shape
 
 Library workspace:

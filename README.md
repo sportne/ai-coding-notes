@@ -26,6 +26,7 @@ recipes/
     starter/
   cpp/
     cmake-library.md
+    starter/
   mixed/
     demo-harness.md
 templates/

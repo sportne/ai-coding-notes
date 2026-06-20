@@ -36,6 +36,8 @@ Use this for any new repo before choosing a language-specific layout.
 
 Start new task files from [task-template.md](../templates/task-template.md) unless the project already has a stronger local task format.
 
+Start durable design decisions from [adr.md](../templates/adr.md). Add a release policy based on [release-policy.md](../templates/release-policy.md) before the first tagged version.
+
 ## Root Files To Add Early
 
 - `README.md`: purpose, setup, core commands, repository map.
@@ -43,6 +45,7 @@ Start new task files from [task-template.md](../templates/task-template.md) unle
 - `.gitignore`: language build outputs and local scratch directories.
 - `.editorconfig`: indentation and newline policy.
 - `LICENSE`: decide early so generated files and package metadata are consistent.
+- `docs/release-policy.md`: version tags, compatibility rules, and artifact distribution expectations.
 
 ## Local Quality Gate
 

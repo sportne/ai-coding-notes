@@ -30,9 +30,11 @@ recipes/
   mixed/
     demo-harness.md
 templates/
+  adr.md
   agent-instructions.md
   prompts.md
   project-checklist.md
+  release-policy.md
   task-template.md
 ```
 
@@ -44,6 +46,6 @@ templates/
 4. Keep a task list in `tasks/` and require each task to name its validation command.
 5. Promote repeated build/test setup into `Makefile`, Gradle root tasks, or CMake presets early.
 
-Use [prompt templates](templates/prompts.md) for repeated agent workflows such as exhaustive test expansion, task batches with review gates, commit-message review, and project reflection.
+Use [prompt templates](templates/prompts.md) for repeated agent workflows such as exhaustive test expansion, task batches with review gates, commit-message review, and project reflection. Use [adr.md](templates/adr.md) for durable design decisions and [release-policy.md](templates/release-policy.md) to capture versioning and compatibility defaults.
 
 The most reusable local habit is not a specific framework. It is asking the agent to make the project self-explaining: root commands, explicit docs, focused examples, architecture checks where useful, and a local quality gate that mirrors CI.

@@ -22,6 +22,8 @@ Before filling this out, choose the closest project-type recipe and use its tool
 - [ ] Test, format, lint/static analysis, architecture, coverage, and packaging tools are explicitly chosen.
 - [ ] If the project is schema-, config-, or data-driven, schemas and sample inputs are checked in and validated.
 - [ ] Task tracking uses [task-template.md](task-template.md) or a project-specific format with status, dependencies, acceptance criteria, and validation.
+- [ ] Durable design decisions use [adr.md](adr.md) or an equivalent ADR format.
+- [ ] Release and compatibility expectations are documented using [release-policy.md](release-policy.md) or an equivalent project policy.
 
 ## First Vertical Slice
 
@@ -34,6 +36,7 @@ Before filling this out, choose the closest project-type recipe and use its tool
 ## Before The Project Grows
 
 - [ ] Architecture or module boundaries are documented.
+- [ ] Significant architecture, dependency, compatibility, or tooling decisions have ADRs.
 - [ ] Formatting and linting are automated.
 - [ ] Static analysis is part of the normal gate.
 - [ ] Coverage threshold is set if useful.
@@ -45,6 +48,9 @@ Before filling this out, choose the closest project-type recipe and use its tool
 ## Before Release
 
 - [ ] Package metadata is complete.
+- [ ] Version is represented by a git tag.
+- [ ] Backwards compatibility expectations match the documented release policy.
+- [ ] Distribution expectations are clear; by default artifacts are not published to central repositories.
 - [ ] Artifact smoke test exists.
 - [ ] Changelog or release notes exist.
 - [ ] Release dry-run or local publication check exists when publishing packages.

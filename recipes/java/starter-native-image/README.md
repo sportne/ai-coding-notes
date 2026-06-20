@@ -39,3 +39,4 @@ If the Gradle wrapper is not created yet, run commands with `gradle` instead of 
 - Checkstyle, SpotBugs, Spotless, Error Prone, JUnit, JaCoCo, ArchUnit, and GraalVM Native Build Tools wiring
 - application and native-test module placeholders
 - docs and task placeholders
+- optional GitLab, Bitbucket, and Jenkins examples in `ci-examples/`

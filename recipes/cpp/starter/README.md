@@ -34,3 +34,4 @@ Coverage and sanitizer presets are included but should be enabled after the firs
 - cppcheck suppression file
 - placeholder homes for headers, source, tests, examples, docs, scripts, and tasks
 - CI that runs the same local `make ci` gate
+- optional GitLab, Bitbucket, and Jenkins examples in `ci-examples/`

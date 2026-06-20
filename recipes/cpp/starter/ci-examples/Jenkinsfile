@@ -1,0 +1,31 @@
+pipeline {
+    agent {
+        docker {
+            image 'ubuntu:24.04'
+            args '-u root'
+        }
+    }
+
+    stages {
+        stage('Install tools') {
+            steps {
+                sh '''
+                    apt-get update
+                    apt-get install -y --no-install-recommends build-essential ca-certificates cmake ninja-build clang clang-tidy clang-format cppcheck
+                '''
+            }
+        }
+
+        stage('Quality gate') {
+            steps {
+                sh 'make ci'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'build/**', allowEmptyArchive: true
+        }
+    }
+}

@@ -30,3 +30,4 @@ If the Gradle wrapper is not created yet, run commands with `gradle` instead of 
 - Checkstyle, SpotBugs, Spotless, Error Prone, JUnit, JaCoCo, and ArchUnit wiring
 - empty module placeholders
 - docs and task placeholders
+- optional GitLab, Bitbucket, and Jenkins examples in `ci-examples/`

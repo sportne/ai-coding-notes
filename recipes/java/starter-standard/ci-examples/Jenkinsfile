@@ -1,0 +1,26 @@
+pipeline {
+    agent {
+        docker {
+            image 'gradle:8.14.3-jdk21'
+        }
+    }
+
+    environment {
+        GRADLE_USER_HOME = "${WORKSPACE}/.gradle"
+    }
+
+    stages {
+        stage('Quality gate') {
+            steps {
+                sh 'gradle qualityGate --console=plain'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/build/reports/**,**/build/test-results/**', allowEmptyArchive: true
+            junit testResults: '**/build/test-results/test/*.xml', allowEmptyResults: true
+        }
+    }
+}

@@ -1,0 +1,39 @@
+pipeline {
+    agent {
+        docker {
+            image 'gradle:8.14.3-jdk21'
+        }
+    }
+
+    environment {
+        GRADLE_USER_HOME = "${WORKSPACE}/.gradle"
+    }
+
+    parameters {
+        booleanParam(name: 'RUN_NATIVE_SMOKE', defaultValue: false, description: 'Run the Native Image smoke gate')
+    }
+
+    stages {
+        stage('Quality gate') {
+            steps {
+                sh 'gradle qualityGate --console=plain'
+            }
+        }
+
+        stage('Native smoke') {
+            when {
+                expression { params.RUN_NATIVE_SMOKE }
+            }
+            steps {
+                sh 'gradle nativeSmoke --console=plain'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: '**/build/reports/**,**/build/test-results/**,**/build/native/**', allowEmptyArchive: true
+            junit testResults: '**/build/test-results/test/*.xml', allowEmptyResults: true
+        }
+    }
+}

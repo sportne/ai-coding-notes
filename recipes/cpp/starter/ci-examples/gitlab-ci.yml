@@ -1,0 +1,16 @@
+stages:
+  - quality
+
+quality:
+  stage: quality
+  image: ubuntu:24.04
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends build-essential ca-certificates cmake ninja-build clang clang-tidy clang-format cppcheck
+  script:
+    - make ci
+  artifacts:
+    when: always
+    paths:
+      - build/
+    expire_in: 7 days

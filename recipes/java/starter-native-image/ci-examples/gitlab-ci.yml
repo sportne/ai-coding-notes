@@ -1,0 +1,42 @@
+stages:
+  - quality
+  - native
+
+variables:
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+
+quality:
+  stage: quality
+  image: gradle:8.14.3-jdk21
+  cache:
+    key: gradle
+    paths:
+      - .gradle/caches/
+      - .gradle/wrapper/
+  script:
+    - gradle qualityGate --console=plain
+  artifacts:
+    when: always
+    paths:
+      - "**/build/reports/"
+      - "**/build/test-results/"
+    expire_in: 7 days
+
+native_smoke:
+  stage: native
+  image: gradle:8.14.3-jdk21
+  cache:
+    key: gradle
+    paths:
+      - .gradle/caches/
+      - .gradle/wrapper/
+  script:
+    - gradle nativeSmoke --console=plain
+  when: manual
+  allow_failure: false
+  artifacts:
+    when: always
+    paths:
+      - "**/build/reports/"
+      - "**/build/native/"
+    expire_in: 7 days

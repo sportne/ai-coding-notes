@@ -22,6 +22,15 @@ make format-check
 make lint
 make typecheck
 make test
+make ci
 ```
 
 `make coverage` is included but should be enabled after the first real tests exist.
+
+## Included Structure
+
+- Python package metadata and Makefile aliases
+- Ruff, mypy, pytest, coverage, and build wiring
+- coverage threshold helper script
+- placeholder homes for source, tests, docs, scripts, and tasks
+- optional GitLab, Bitbucket, and Jenkins examples in `ci-examples/`

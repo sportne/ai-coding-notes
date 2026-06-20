@@ -1,0 +1,17 @@
+image: python:3.12-slim
+
+pipelines:
+  default:
+    - step:
+        name: Quality Gate
+        caches:
+          - pip
+        script:
+          - apt-get update
+          - apt-get install -y --no-install-recommends make
+          - make setup-venv
+          - make install-dev
+          - make ci
+        artifacts:
+          - coverage.json
+          - htmlcov/**

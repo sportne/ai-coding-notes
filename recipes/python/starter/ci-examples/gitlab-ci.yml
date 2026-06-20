@@ -1,0 +1,19 @@
+stages:
+  - quality
+
+quality:
+  stage: quality
+  image: python:3.12-slim
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends make
+    - make setup-venv
+    - make install-dev
+  script:
+    - make ci
+  artifacts:
+    when: always
+    paths:
+      - coverage.json
+      - htmlcov/
+    expire_in: 7 days

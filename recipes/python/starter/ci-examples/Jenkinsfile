@@ -1,0 +1,38 @@
+pipeline {
+    agent {
+        docker {
+            image 'python:3.12-slim'
+            args '-u root'
+        }
+    }
+
+    stages {
+        stage('Install tools') {
+            steps {
+                sh '''
+                    apt-get update
+                    apt-get install -y --no-install-recommends make
+                '''
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'make setup-venv'
+                sh 'make install-dev'
+            }
+        }
+
+        stage('Quality gate') {
+            steps {
+                sh 'make ci'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'coverage.json,htmlcov/**', allowEmptyArchive: true
+        }
+    }
+}

@@ -1,0 +1,24 @@
+image: gradle:8.14.3-jdk21
+
+pipelines:
+  default:
+    - step:
+        name: Quality Gate
+        caches:
+          - gradle
+        script:
+          - gradle qualityGate --console=plain
+        artifacts:
+          - "**/build/reports/**"
+          - "**/build/test-results/**"
+  custom:
+    native-smoke:
+      - step:
+          name: Native Smoke
+          caches:
+            - gradle
+          script:
+            - gradle nativeSmoke --console=plain
+          artifacts:
+            - "**/build/reports/**"
+            - "**/build/native/**"

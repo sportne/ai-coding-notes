@@ -1,6 +1,6 @@
 # C++ CMake Library Recipe
 
-Use this for C++ libraries, native agents, and performance-heavy code. It reflects `cpp-helper-libs` and `jvmpg`.
+Use this for C++ libraries, native agents, and performance-heavy code.
 
 ## Directory Shape
 

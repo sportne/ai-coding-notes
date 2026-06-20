@@ -1,6 +1,6 @@
 # Java Gradle Multi-Module Recipe
 
-This is the strongest recent pattern in the workspace. It appears in `mundane-java-orb`, `mundane-java-lp`, `mundane-xsd-java-bind`, `mundane-json-java-bind`, `mundane-logger`, `mundane-java-di`, and `maze-game`.
+Use this for Java libraries, JVM-adjacent tooling, modular applications, and projects that may need publishing, architecture tests, or native-image checks later.
 
 ## Directory Shape
 
@@ -126,7 +126,7 @@ tasks.named('check') {
 
 ## When To Keep It Smaller
 
-For small Java experiments, use the `misc` or `bms` pattern: one `app/` or `lib/` module, root `build.gradle`, `settings.gradle`, Gradle wrapper, `config/`, `docs/`, and `tasks/`. Still keep a single root `check` or `qualityGate`.
+For small Java experiments, use one `app/` or `lib/` module, root `build.gradle`, `settings.gradle`, Gradle wrapper, `config/`, `docs/`, and `tasks/`. Still keep a single root `check` or `qualityGate`.
 
 ## Default Tool Stack
 

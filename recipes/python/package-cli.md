@@ -1,6 +1,6 @@
 # Python Package And CLI Recipe
 
-Use this for Python libraries, CLIs, repo-analysis tools, and AI tooling. It reflects `codectx`, `llm-tools`, `engllm-chat`, `sddraft`, `python-sonarqube-api`, `plottinglib`, and `motif-tap-harness`.
+Use this for Python libraries, CLIs, repo-analysis tools, API wrappers, GUI utilities, and AI/provider-backed tooling.
 
 ## Directory Shape
 
@@ -25,7 +25,7 @@ Use this for Python libraries, CLIs, repo-analysis tools, and AI tooling. It ref
 └── .github/workflows/
 ```
 
-For workspace-style projects, use `packages/*` and declare the workspace in `pyproject.toml`, as in `plottinglib`.
+For workspace-style projects, use `packages/*` and declare the workspace in `pyproject.toml`.
 
 ## Tooling Defaults
 
@@ -96,7 +96,7 @@ clean:
 ci: format-check lint typecheck coverage
 ```
 
-If the project is intentionally simple, `python-sonarqube-api` shows a lighter version with `.venv`, black, isort, Ruff, mypy, pytest, and package targets.
+If the project is intentionally simple, a lighter version with `.venv`, Black, isort, Ruff, mypy, pytest, and package targets is acceptable.
 
 ## Pyproject Sections
 
@@ -122,10 +122,12 @@ Include these sections early:
 
 ## Useful Variants
 
-- CLI artifact: add `pex` and `make artifact` / `make artifact-smoke`, as in `codectx` and `engllm-chat`.
+- CLI artifact: add `pex` and `make artifact` / `make artifact-smoke`.
 - App with local UI: keep UI resources under package data and add smoke tests that do not require live credentials by default.
 - API wrapper: generate endpoint docs into `documentation/` and examples into `examples/`.
 - Mixed Python/C harness: keep C code under `c/`, expose `make build-hook`, and add `make doctor`.
+- GUI app: keep GUI tests deterministic with stubs or headless-safe marks, and use a dedicated pytest marker for tests that need display support.
+- LLM/provider app: store runtime config in YAML, keep provider smoke commands opt-in, and stub provider clients in normal tests.
 
 ## Default Tool Stack
 
@@ -142,3 +144,14 @@ Include these sections early:
 | CI | `make format-check`, `make lint`, `make typecheck` or `make reachability`, `make coverage` |
 
 Use Black + isort when inheriting an existing repo that already has those tools. For new Python projects, prefer Ruff format plus Ruff import sorting to reduce the tool count.
+
+## Config And Schema Projects
+
+For tools that operate on structured project data, add these early:
+
+- `spec/` or `schemas/` for JSON Schema or DSL references.
+- `examples/*.json` or `examples/*.yaml` for representative inputs.
+- validation tests that fail on stale examples.
+- report-generation smoke tests if the tool writes Markdown, PDF, or other rendered artifacts.
+
+Use this pattern when the tool operates on checked-in schemas, project metadata, prompts, structured examples, or generated reports.

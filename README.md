@@ -1,17 +1,20 @@
 # AI Coding Notes
 
-This repo is a cookbook for starting new coding projects with AI assistance. It is based on the setup patterns in sibling repositories under `/mnt/d/projects`, with more weight given to repos touched most recently.
+This repo is a cookbook for starting new coding projects with AI assistance. It captures reusable project setup patterns, tooling choices, and task formats for quickly scaffolding new work.
 
 Use it as a starting point when asking an AI coding agent to scaffold, harden, or extend a project. Pick the closest recipe, copy the directory shape, then ask the agent to fill in the first small vertical slice before expanding the system.
 
 ## Start Here
 
-- [Sibling repo survey](surveys/sibling-repo-survey.md) records the projects reviewed and the patterns worth reusing.
+- [Project pattern summary](surveys/project-patterns.md) records recurring patterns worth reusing.
 - [Common project layout](recipes/common-project-layout.md) captures the baseline directories that show up across languages.
 - [Java Gradle multi-module recipe](recipes/java/gradle-multi-module.md) is the strongest current pattern in the workspace.
 - [Python package and CLI recipe](recipes/python/package-cli.md) covers the `src/`, `tests/`, `Makefile`, and `pyproject.toml` style.
 - [C++ CMake recipe](recipes/cpp/cmake-library.md) covers CMake presets, `include/`, `src/`, `tests/`, and local quality gates.
+- [.NET Blazor web app recipe](recipes/dotnet/blazor-webapp.md) covers solution-based Blazor WebAssembly plus API projects.
 - [Demo or harness recipe](recipes/mixed/demo-harness.md) covers projects that combine scripts, generated examples, C helpers, containers, or GUI/live-loop validation.
+- [Design decision documents recipe](recipes/process/design-decision-docs.md) covers schema-backed design analysis and report generation.
+- [Shell automation toolkit recipe](recipes/shell/automation-toolkit.md) covers script-driven repository and migration tooling.
 
 ## Directory Map
 
@@ -24,13 +27,20 @@ recipes/
     package-cli.md
   cpp/
     cmake-library.md
+  dotnet/
+    blazor-webapp.md
   mixed/
     demo-harness.md
+  process/
+    design-decision-docs.md
+  shell/
+    automation-toolkit.md
 surveys/
-  sibling-repo-survey.md
+  project-patterns.md
 templates/
   agent-instructions.md
   project-checklist.md
+  task-template.md
 ```
 
 ## How To Use With An AI Agent

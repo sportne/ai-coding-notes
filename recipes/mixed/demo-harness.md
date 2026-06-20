@@ -1,6 +1,6 @@
 # Demo Or Harness Recipe
 
-Use this when a project is more than a normal library: GUI automation, generated tests, containers, external tools, examples, recordings, or language interop. This reflects `motif-tap-harness`, `maze-game`, `bms`, and parts of `mundane-java-lp`.
+Use this when a project is more than a normal library: GUI automation, generated tests, containers, external tools, examples, recordings, language interop, assets, or benchmark harnesses.
 
 ## Directory Shape
 

@@ -13,6 +13,8 @@ Use this for any new repo before choosing a language-specific layout.
 │   ├── verification.md
 │   └── adr/
 ├── examples/
+├── config/
+├── schemas/ or spec/
 ├── scripts/
 ├── tasks/
 │   ├── README.md
@@ -25,10 +27,14 @@ Use this for any new repo before choosing a language-specific layout.
 
 - `docs/`: durable decisions, architecture, scope, validation strategy, release notes, compatibility, and user-facing usage notes.
 - `examples/`: runnable examples that prove the public workflow, not just snippets.
+- `config/`: checked-in example or operational configuration for tools, harnesses, and scripts.
+- `schemas/` or `spec/`: JSON Schema, DSL references, generated-input contracts, and other structured data definitions.
 - `scripts/`: repeatable support commands that are too large or awkward for a build file.
 - `tasks/`: AI-friendly implementation chunks. Each task should include acceptance criteria and validation commands.
 - `tests/`: normal automated tests. Keep generated fixtures and large corpora in clearly named subdirectories.
 - `.github/workflows/`: CI that runs the same root command used locally.
+
+Start new task files from [task-template.md](../templates/task-template.md) unless the project already has a stronger local task format.
 
 ## Root Files To Add Early
 

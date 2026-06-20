@@ -7,7 +7,10 @@ Before filling this out, choose the closest project-type recipe and use its tool
 - [Java Gradle multi-module](../recipes/java/gradle-multi-module.md)
 - [Python package and CLI](../recipes/python/package-cli.md)
 - [C++ CMake library](../recipes/cpp/cmake-library.md)
+- [.NET Blazor web app](../recipes/dotnet/blazor-webapp.md)
 - [Demo or harness](../recipes/mixed/demo-harness.md)
+- [Design decision documents](../recipes/process/design-decision-docs.md)
+- [Shell automation toolkit](../recipes/shell/automation-toolkit.md)
 
 ## Initial Scaffold
 
@@ -20,6 +23,8 @@ Before filling this out, choose the closest project-type recipe and use its tool
 - [ ] CI runs the same local gate or documents any difference.
 - [ ] Tooling choices follow the selected project-type recipe or document why they differ.
 - [ ] Test, format, lint/static analysis, architecture, coverage, and packaging tools are explicitly chosen.
+- [ ] If the project is schema-, config-, or data-driven, schemas and sample inputs are checked in and validated.
+- [ ] Task tracking uses [task-template.md](task-template.md) or a project-specific format with status, dependencies, acceptance criteria, and validation.
 
 ## First Vertical Slice
 
@@ -38,6 +43,7 @@ Before filling this out, choose the closest project-type recipe and use its tool
 - [ ] Public APIs have examples.
 - [ ] Generated files, fixtures, recordings, and scratch data are separated.
 - [ ] Optional external services or tools are documented and skipped by default in normal CI.
+- [ ] Any AI/provider-backed behavior has deterministic tests with network calls stubbed or gated.
 
 ## Before Release
 

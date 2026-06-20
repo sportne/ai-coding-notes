@@ -31,6 +31,7 @@ recipes/
     demo-harness.md
 templates/
   agent-instructions.md
+  prompts.md
   project-checklist.md
   task-template.md
 ```
@@ -42,5 +43,7 @@ templates/
 3. Ask the agent to add one working end-to-end slice: code, tests, docs, and local verification.
 4. Keep a task list in `tasks/` and require each task to name its validation command.
 5. Promote repeated build/test setup into `Makefile`, Gradle root tasks, or CMake presets early.
+
+Use [prompt templates](templates/prompts.md) for repeated agent workflows such as exhaustive test expansion, task batches with review gates, commit-message review, and project reflection.
 
 The most reusable local habit is not a specific framework. It is asking the agent to make the project self-explaining: root commands, explicit docs, focused examples, architecture checks where useful, and a local quality gate that mirrors CI.
